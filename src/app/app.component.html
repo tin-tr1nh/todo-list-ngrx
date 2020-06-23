@@ -1,5 +1,10 @@
 <h1>{{ title }}</h1>
+<div class="todo-app">
+  <ul>
+    <app-todo-item *ngFor="let todoItem of todoList" [item]="todoItem"></app-todo-item>
+  </ul>
 
-<ul>
-  <app-todo-item *ngFor="let todoItem of todoList" [title]="todoItem.title"></app-todo-item>
-</ul>
+
+  <app-input-button-unit [buttonName]="'Hello'" (submitText)="onReceiveNewItem($event)"></app-input-button-unit>
+
+</div>

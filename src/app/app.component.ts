@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { v4 } from 'uuid';
+import { TodoItem } from './models/todo-item';
+import { TodoListService } from './todo-list.service';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +9,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ngrx-todo-list';
+  onReceiveNewItem(newItemText: string) {
+    this.todoList.push({
+      id: v4(),
+      title: newItemText,
+    })
+  }
 
-  todoList = [
-    {
-      id: 1,
-      title: 'Do home work',
-    },
-    {
-      id: 2,
-      title: 'Do home work 2',
-    },
-  ];
+  title = 'Todo list demo';
+
+  constructor(private todoListService: TodoListService) {}
+
+  todoList: TodoItem[] = this.todoListService.getTodoList();
 }
