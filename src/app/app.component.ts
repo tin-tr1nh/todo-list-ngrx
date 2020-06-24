@@ -29,4 +29,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.todoList = this.todoListService.getTodoList();
   }
+
+  handleDeleteItem(id: string) {
+    this.todoListService.deleteTodo(id);
+    this.todoList = this.todoListService.getTodoList();
+  }
 }

@@ -32,8 +32,8 @@ export class TodoListService {
     this.storageService.setData(this.TodoListKey, this.currentTodoList);
   }
 
-  deleteTodo(item: TodoItem) {
-    this.currentTodoList = this.currentTodoList.filter((value) => value.id != item.id);
+  deleteTodo(id: string) {
+    this.currentTodoList = this.currentTodoList.filter((value) => value.id != id);
     this.storageService.setData(this.TodoListKey, this.currentTodoList);
   }
 }

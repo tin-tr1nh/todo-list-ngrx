@@ -1,7 +1,8 @@
 <h1>{{ title }}</h1>
 <div class="todo-app">
   <ul>
-    <app-todo-item *ngFor="let todoItem of todoList" [item]="todoItem"></app-todo-item>
+    <app-todo-item *ngFor="let todoItem of todoList" [item]="todoItem" (onDelete)="handleDeleteItem($event)">
+    </app-todo-item>
   </ul>
 
 
