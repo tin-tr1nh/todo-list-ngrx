@@ -32,6 +32,13 @@ export class AppComponent implements OnInit {
 
   handleDeleteItem(id: string) {
     this.todoListService.deleteTodo(id);
+
+    // when you load the data, the view when be rebuild
     this.todoList = this.todoListService.getTodoList();
+  }
+
+  handleChangeStatusItem(id: string) {
+    this.todoListService.toggleItemStatus(id)
+    this.todoList = this.todoListService.getTodoList()
   }
 }

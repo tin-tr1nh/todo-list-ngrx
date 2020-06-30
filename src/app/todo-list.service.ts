@@ -32,6 +32,24 @@ export class TodoListService {
     this.storageService.setData(this.TodoListKey, this.currentTodoList);
   }
 
+  toggleItemStatus(id: string) {
+    console.log("togle with id: " + id)
+    this.currentTodoList = this.currentTodoList.map(item => {
+      if (item.id !== id) {
+        return item
+      }
+
+      console.log(item, item.completed, !item.completed)
+
+      return {
+        ...item,
+        completed: !item.completed
+      }
+    })
+
+    this.storageService.setData(this.TodoListKey, this.currentTodoList)
+  }
+
   deleteTodo(id: string) {
     this.currentTodoList = this.currentTodoList.filter((value) => value.id != id);
     this.storageService.setData(this.TodoListKey, this.currentTodoList);

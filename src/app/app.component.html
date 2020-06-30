@@ -1,11 +1,14 @@
 <h1>{{ title }}</h1>
 <div class="todo-app">
   <ul>
-    <app-todo-item *ngFor="let todoItem of todoList" [item]="todoItem" (onDelete)="handleDeleteItem($event)">
+    <app-todo-item *ngFor="let todoItem of todoList" [item]="todoItem"
+      (onDelete)="handleDeleteItem($event)"
+      (onChangeStatus)="handleChangeStatusItem($event)">
     </app-todo-item>
   </ul>
 
 
-  <app-input-button-unit [buttonName]="'Hello'" (submitText)="onReceiveNewItem($event)"></app-input-button-unit>
+  <app-input-button-unit [buttonName]="'Hello'" (submitText)="onReceiveNewItem($event)">
+  </app-input-button-unit>
 
 </div>

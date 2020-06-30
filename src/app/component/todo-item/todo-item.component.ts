@@ -8,7 +8,9 @@ import { TodoItem } from 'src/app/models/todo-item';
 })
 export class TodoItemComponent implements OnInit {
   @Input() item: TodoItem;
-  @Output('onDelete') eventEmitter: EventEmitter<string> = new EventEmitter();
+  @Output('onDelete') onDeleteEmitter: EventEmitter<string> = new EventEmitter()
+  @Output('onChangeStatus') onChangeStatusEmitter: EventEmitter<string> = new EventEmitter()
+
 
   constructor() { }
 
@@ -16,6 +18,11 @@ export class TodoItemComponent implements OnInit {
   }
 
   onDelete() {
-    this.eventEmitter.emit(this.item.id)
+    this.onDeleteEmitter.emit(this.item.id)
+  }
+
+  onIsDoneChange() {
+    console.log(this.item.completed)
+    this.onChangeStatusEmitter.emit(this.item.id)
   }
 }
